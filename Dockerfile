@@ -9,4 +9,4 @@ FROM eclipse-temurin:17
 WORKDIR /app
 COPY --from=build /build/target/spring-boot-hello-world-0.0.1-SNAPSHOT.jar ./app.jar
 COPY jmx_exporter/ agent/
-CMD ["sh", "-c", "exec java -jar ${JAVA_OPTS} app.jar"]
+CMD ["sh", "-c", "exec java ${JAVA_OPTS} -jar app.jar"]
