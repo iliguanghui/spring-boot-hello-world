@@ -1,4 +1,5 @@
 FROM maven:3.9.2-amazoncorretto-17-debian-bullseye AS build
+COPY settings.xml /usr/share/maven/conf/
 WORKDIR /build
 COPY pom.xml ./
 RUN mvn dependency:resolve
