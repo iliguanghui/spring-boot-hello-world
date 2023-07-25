@@ -2,7 +2,7 @@ FROM maven:3.9.2-amazoncorretto-17-debian-bullseye AS build
 COPY settings.xml /usr/share/maven/conf/
 WORKDIR /build
 COPY pom.xml ./
-RUN mvn dependency:resolve
+RUN mvn dependency:resolve && mvn dependency:resolve-plugins
 COPY src ./src/
 RUN mvn clean package -Dmaven.test.skip=true
 FROM registry.cn-hangzhou.aliyuncs.com/lgypro/eclipse-temurin-debug:17
