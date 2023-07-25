@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-service
+  annotations:
+    nginx.org/server-snippets: |
+      location /app/ {
+          rewrite ^/app/(.*)$ /$1;
+      }
+spec:
+  rules:
+  - host: hello.liguanghui.pro
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp
+            port:
+              name: http
+  tls:
+  - hosts:
+      - "hello.liguanghui.pro"
+    secretName: liguanghui.pro
