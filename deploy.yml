@@ -15,6 +15,11 @@ spec:
       creationTimestamp: null
       labels:
         app: myapp
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "12345"
+        prometheus.io/scheme: http
+        prometheus.io/scrape: "true"
     spec:
       containers:
       - image: registry.cn-hangzhou.aliyuncs.com/lgypro/spring-boot-hello-world:v1
